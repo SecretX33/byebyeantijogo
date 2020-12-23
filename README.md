@@ -1,22 +1,22 @@
 # ByeByeAntiJogo
 
-## Download
-
-You can download the lastest version by [clicking here](https://github.com/SecretX33/ByeByeAntiJogo/releases/latest/download/ByeByeAntiJogo.zip). 
-
-OR if you want to download an earlier version of the addon, you can do it by checking the release page [here](https://github.com/SecretX33/ByeByeAntiJogo/releases).
-
 ## Summary
 
 This addon is made for World of Warcraft 3.3.5a
 
 This addon removes many spells considered "antijogo" in WoW Brasil after being cast on player.
 
+## Download
+
+You can download the lastest version by [clicking here](https://github.com/SecretX33/ByeByeAntiJogo/releases/latest/download/ByeByeAntiJogo.zip). 
+
+OR if you want to download an earlier version of the addon, you can do it by checking the release page [here](https://github.com/SecretX33/ByeByeAntiJogo/releases).
+
 ------------
 
 **Slash commands:**
 
-/aj or /bbaj or /byebyeantijogo - Show addon help
+/aj or /bbaj or /byebyeantijogo - Toggle addon on and off
 
 /aj toggle - Toggle addon on and off
 
