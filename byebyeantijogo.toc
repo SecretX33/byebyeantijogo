@@ -1,0 +1,14 @@
+# You can find updates in https://github.com/SecretX33/AutomaticWeaponRemoval
+#
+## Interface: 30300
+## Title: ByeByeAntiJogo
+## Notes: Remove alguns buffs castados pelos seus amigos que te atrapalham... ;)
+## Author: SecretX (Freezingice @ WoW-Brasil)
+## Version: 1.0
+## SavedVariables: BBAJDB
+## SavedVariablesPerCharacter: BBAJDBC
+## OptionalDeps: BugSack, !Swatter
+## X-Category: Combat Assist
+
+embeds.xml
+byebyeantijogo.lua
