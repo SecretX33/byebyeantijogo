@@ -50,23 +50,31 @@ end
 
 -- [string utils]
 local function upperFirst(str)
-   if(str==nil) then return "" end
+   if str==nil then return "" end
+   assert(type(str) == "string", "bad argument #1: 'str' needs to be a string; instead what came was " .. tostring(type(str)))
    return (str:gsub("^%l", string.upper))
 end
 
 local function upperFirstOnly(str)
-   if(str==nil) then return "" end
+   if str==nil then return "" end
+   assert(type(str) == "string", "bad argument #1: 'str' needs to be a string; instead what came was " .. tostring(type(str)))
    return upperFirst(str:lower())
 end
 
 -- Remove spaces on start and end of string
 local function trim(s)
+   if s==nil then return "" end
+   assert(type(s) == "string", "bad argument #1: 's' needs to be a string; instead what came was " .. tostring(type(s)))
    return string.match(s,'^()%s*$') and '' or string.match(s,'^%s*(.*%S)')
 end
 
-local function removeWords(myString, numberOfWords)
-   if (myString~=nil and numberOfWords~=nil) then
-      for i=1, numberOfWords do
+local function removeWords(myString, howMany)
+   if (myString~=nil and howMany~=nil) then
+      assert(type(myString) == "string", "bad argument #1: 'myString' needs to be a string; instead what came was " .. tostring(type(myString)))
+      assert(type(howMany) == "number", "bad argument #2: 'howMany' needs to be a number; instead what came was " .. tostring(type(howMany)))
+      assert(math.floor(howMany) == howMany, "bad argument #2: 'howMany' needs to be an integer")
+
+      for i=1, howMany do
          myString = string.gsub(myString,"^(%s*%a+)","",1)
       end
       return trim(myString)
@@ -76,8 +84,9 @@ end
 -- end of [string utils]
 
 local function doesElementContainsAnyValueFromTable(table, element)
-   if table==nil then send("table came nil inside function to check if table contain a value that fits inside an element, report this");return; end
-   if element==nil then send("element came nil inside function to check if table contain a value that fits inside an element, report this");return; end
+   assert(table~=nil, "bad argument #1: 'table' cannot be nil")
+   assert(type(table) == "table", "bad argument #1: 'table' needs to be a table; instead what came was " .. tostring(type(table)))
+   assert(element~=nil, "bad argument #2: 'element' cannot be nil")
 
    -- If any value from the table is contained inside the element then return true, aka the table have a value that match fits inside the element
    for _, value in pairs(table) do
@@ -203,8 +212,9 @@ local function getDebuffDurationTime(spellID)
 end]]--
 
 local function tableHasThisEntryAndItsTrue(table, entry)
-   if table==nil then send("table came nil inside function that check if table has a value, report this");return; end
-   if entry==nil then send("entry came nil inside function to check if table has a value, report this");return; end
+   assert(table~=nil, "bad argument #1: 'table' cannot be nil")
+   assert(type(table) == "table", "bad argument #1: 'table' needs to be a table; instead what came was " .. tostring(type(table)))
+   assert(entry~=nil, "bad argument #2: 'entry' cannot be nil")
 
    for key, value in pairs(table) do
       if entry == key and value then
@@ -215,7 +225,8 @@ local function tableHasThisEntryAndItsTrue(table, entry)
 end
 
 local function cancelAllBuffsFromPlayerInTableThatAreTrue(buffTable)
-   if buffTable==nil then send("buffTable came nil inside function to remove all buffs inside table from player, report this.");return false; end
+   assert(buffTable~=nil, "bad argument #1: 'buffTable' cannot be nil")
+   assert(type(buffTable) == "table", "bad argument #1: 'buffTable' needs to be a table; instead what came was " .. tostring(type(buffTable)))
 
    for buffID, isTrue in pairs(buffTable) do
       if isTrue then CancelUnitBuff("player", GetSpellInfo(buffID)) end
@@ -234,7 +245,8 @@ end
 -- Logic functions are under here
 local function onAntiJogoCast(srcName, spellID)
    if srcName==nil or srcName=="" then srcName = "Alguém" end
-   if spellID==nil then spellID = 0 end
+   assert(type(spellID) == "number", "bad argument #2: 'spellID' needs to be a number; instead what came was " .. tostring(type(spellID)))
+   assert(math.floor(spellID) == spellID, "bad argument #2: 'spellID' needs to be an integer")
    updatePlayerClassAndSpecIfNeeded()
 
    local sendMessage = false
